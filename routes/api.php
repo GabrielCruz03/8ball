@@ -39,7 +39,6 @@ Route::namespace('Api')->group(function() {
         Route::get('users/{user}/permissions', 'UserController@permissions')->middleware('permission:' . Acl::PERMISSION_PERMISSION_MANAGE);
         Route::put('users/{user}/permissions', 'UserController@updatePermissions')->middleware('permission:' .Acl::PERMISSION_PERMISSION_MANAGE);
         Route::get('roles/{role}/permissions', 'RoleController@permissions')->middleware('permission:' . Acl::PERMISSION_PERMISSION_MANAGE);
-        Route::get('');
     });
 });
 
@@ -56,7 +55,6 @@ Route::get('/table/list', function () {
             'status' => Faker::randomInArray(['deleted', 'published', 'draft']),
             'title' => Faker::randomString(mt_rand(20, 50)),
         ];
-
         $data[] = $row;
     }
 

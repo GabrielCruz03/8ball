@@ -11,24 +11,23 @@
       </div>
     </div> -->
     <div>
-      teste
-      <img :src="emptyGif" class="emptyGif">
+      <p>As Opções são </p>
+      <p v-for="option in options" :key="option">{{ options.option }}</p>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import PanThumb from '@/components/PanThumb';
 import RoletaResource from '@/api/resource.js';
 const roletaResource = new RoletaResource('roleta');
 
 export default {
   name: 'DashboardEditor',
-  components: { PanThumb },
   data() {
     return {
       emptyGif: '',
+      options: [],
     };
   },
   computed: {
@@ -45,6 +44,7 @@ export default {
     async getRoletaOptions() {
       const data = await roletaResource.list();
       console.log(data);
+      this.options = data;
     },
   },
 };
